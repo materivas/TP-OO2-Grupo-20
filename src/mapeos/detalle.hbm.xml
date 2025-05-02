@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="datos.Detalle" table="detalle">
+        <id name="turno" column="idturno">
+            <generator class="foreign"/>
+        </id>
+        <property name="estadoTurno" column="estadoTurno" type="boolean"/>
+        <property name="fecha" column="fecha" type="localDate"/>
+        <property name="descripcion" column="descripcion" type="String"/>
+        <one-to-one name="turno" class="datos.Turno" constrained="true" />
+    </class>
+</hibernate-mapping>
