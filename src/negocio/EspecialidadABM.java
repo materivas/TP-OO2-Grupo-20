@@ -11,7 +11,7 @@ public class EspecialidadABM {
 		this.dao = new EspecialidadDao();
 	}
 	
-	public Especialidad traer(long idEspecialidad) {
+	public Especialidad traer(int idEspecialidad) {
 		//Excepción
 		return dao.traerEspecialidad(idEspecialidad);
 	}
