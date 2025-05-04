@@ -10,10 +10,9 @@ public abstract class Persona {
     private Integer dni;
     private String email;
     private LocalDate fechaDeNacimiento;
-
-    
     private Boolean obraSocial;
 
+    
     // Getters y Setters
     public Long getIdPersona() {
         return idPersona;
@@ -70,4 +69,13 @@ public abstract class Persona {
     public void setObraSocial(Boolean obraSocial) {
         this.obraSocial = obraSocial;
     }
+
+	@Override
+	public String toString() {
+		return "Persona [idPersona=" + idPersona + ", nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni
+				+ ", email=" + email + ", fechaDeNacimiento=" + fechaDeNacimiento + ", obraSocial=" + obraSocial + "]";
+	}
+    
+    
+    
 }
