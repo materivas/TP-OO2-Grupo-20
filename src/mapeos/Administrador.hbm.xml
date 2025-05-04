@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <joined-subclass name="modelo.Administrador" extends="modelo.Persona" table="administrador">
+        <key column="id_persona"/>
+        <property name="user" column="user" not-null="true" unique="true"/>
+        <property name="password" column="password" not-null="true"/>
+        <many-to-one name="rol" class="modelo.Rol" column="id_rol"/>
+    </joined-subclass>
+</hibernate-mapping>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="modelo.Persona" table="persona" abstract="true">
+        <id name="idPersona" column="id_persona">
+            <generator class="identity"/>
+        </id>
+
+        <property name="nombre" column="nombre"/>
+        <property name="apellido" column="apellido"/>
+        <property name="dni" column="dni"/>
+        <property name="email" column="email"/>
+        <property name="fechaDeNacimiento" column="fechaDeNacimiento" type="localDate"/>
+        <property name="obraSocial" column="obraSocial" type="boolean"/>
+    </class>
+</hibernate-mapping>
+
