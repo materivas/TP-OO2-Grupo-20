@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <joined-subclass name="modelo.Cliente" extends="modelo.Persona" table="cliente">
+         <id column="idPersona" name="idPersona">
+      		<generator class="identity"/>
+    	</id>
+    	
+        <property name="email" column="email" />
+        <property name="fechaAlta" column="fechaAlta" type="date" />
+
+        <!-- Relaciones -->
+        <set name="turnos" inverse="true" cascade="all">
+            <key column="idCliente" />
+            <one-to-many class="modelo.Turno"/>
+        </set>
+
+        <set name="prestamos" inverse="true" cascade="all">
+            <key column="idCliente" />
+            <one-to-many class="modelo.Prestamo"/>
+        </set>
+
+        <set name="cuotas" inverse="true" cascade="all">
+            <key column="idCliente" />
+            <one-to-many class="modelo.Cuota"/>
+        </set>
+
+    </joined-subclass>
+
+</hibernate-mapping>

@@ -1,5 +1,15 @@
 package datos;
 
+<<<<<<< HEAD
+=======
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import datos.Persona;
+>>>>>>> branch 'main' of https://github.com/materivas/TP-OO2-Grupo-20.git
 
 
 
