@@ -1,17 +1,8 @@
 package datos;
 
-import jakarta.persistence.*;
-
-@Entity
-@Table(name = "rol")
 public class Rol {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_rol")
     private Integer idRol;
-
-    @Column(name = "nombre_rol", nullable = false)
     private String nombreRol;
 
     // Getters y Setters

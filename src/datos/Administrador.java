@@ -1,21 +1,16 @@
 package datos;
 
-import jakarta.persistence.*;
 
-@Entity
-@Table(name = "administrador")
+
+
 public class Administrador extends Persona {
-
-    @Column(name = "user", unique = true, nullable = false)
+   
     private String user;
-
-    @Column(name = "password", nullable = false)
     private String password;
-
-    @ManyToOne
-    @JoinColumn(name = "id_rol")
     private Rol rol;
 
+    
+    
     // Getters y Setters
 
     public String getUser() {
