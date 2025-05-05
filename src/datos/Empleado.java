@@ -50,7 +50,7 @@ public class Empleado extends Persona {
 
 	@Override
 	public String toString() {
-		return "Empleado [" + super.toString() +  ", cuil=" + cuil + ", esta disponible=" + estaDisponible + ", especialidad=" + especialidades
+		return "Empleado [" +   ", cuil=" + cuil + ", esta disponible=" + estaDisponible + ""
 				+ "]";
 	}
 	

@@ -102,5 +102,20 @@ public class EmpleadoDao {
         return lista;
     }
     
+    public Empleado traerEmpleadoYEspecialidad(long idEmpleado) {
+        Empleado objeto = null;
+        try {
+            iniciaOperacion();
+            String hql = "from Empleado e where e.idEmpleado =:idEmpleado";
+            objeto = (Empleado) session.createQuery(hql).setParameter("idEmpleado", idEmpleado)
+            		.uniqueResult();
+            Hibernate.initialize(objeto.getEspecialidades());
+        } finally {
+            session.close();
+        }
+        return objeto;
+    }
+    
+    
     
 }

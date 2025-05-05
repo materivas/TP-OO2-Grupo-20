@@ -66,8 +66,7 @@ public class EspecialidadDao {
     }
 
     
-    //Cambie el "Long idEmpleado" por "int idEmpleado" Corregir en la base de datos.
-	public Especialidad traerEspecialidad(int idEspecialidad) {
+	public Especialidad traerEspecialidad(long idEspecialidad) {
         Especialidad objeto = null;
         try {
             iniciaOperacion();
@@ -78,6 +77,17 @@ public class EspecialidadDao {
         return objeto;
     }
 	  
- 
+	public Especialidad traerEspecialidadYClientes(long idEspecialidad) {
+        Especialidad objeto = null;
+        try {
+            iniciaOperacion();
+            String hql="SELECT e FROM Especialidad e LEFT JOIN FETCH e.empleados WHERE e.idEspecialidad = :idEspecialidad";
+            objeto = (Especialidad) session.createQuery(hql).setParameter("idEspecialidad", idEspecialidad).uniqueResult();
+            Hibernate.initialize(objeto.getEmpleados());
+        } finally {
+            session.close();
+        }
+        return objeto;
+    }
     
 }
