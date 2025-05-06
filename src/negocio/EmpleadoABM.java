@@ -48,4 +48,10 @@ public class EmpleadoABM {
 	public List<Empleado> traerEmpleado() {
 		return dao.traerEmpleado();
 	}
+	
+	public Empleado traerEmpleadoYRol(long idEmpleado) {
+		return dao.traerEmpleadoYRol(idEmpleado);
+	}
+	
+	
 }

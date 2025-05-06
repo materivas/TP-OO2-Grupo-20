@@ -23,6 +23,27 @@
          		<one-to-many class="datos.Turno"/> 
       		</set>
       	</joined-subclass>
+      	
+      	<joined-subclass name="datos.Empleado" extends="datos.Persona" table="empleado">
+   	    	<key column="idPersona"/>
+      		<property name="cuil" column="cuil" type="long"/>
+      		<property name="estaDisponible" column="estaDisponible" type="boolean"/>
+      		
+      		<!-- Relación many-to-many con Especialidad -->
+      		<set table="empleadoxespecialidad" name="especialidades" outer-join="true">
+			    <key column="idEmpleado"/>
+			    <many-to-many column="idEspecialidad" class="datos.Especialidad"/>
+			</set>
+			
+			<!-- Relación many-to-one con Rol -->
+			<many-to-one 
+                name="rol" 
+                column="idRol" 
+                class="datos.Rol"
+                not-null="true"
+            />
+      	</joined-subclass>
+      	
     
     
     </class>

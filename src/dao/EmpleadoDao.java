@@ -116,6 +116,19 @@ public class EmpleadoDao {
         return objeto;
     }
     
+    public Empleado traerEmpleadoYRol(long idEmpleado) {
+		Empleado objeto = null;
+		try {
+			iniciaOperacion();
+			String hql = "FROM Empleado e INNER JOIN FETCH e.rol WHERE e.idEmpleado = :idEmpleado";
+			objeto = (Empleado) session.createQuery(hql).setParameter("idEmpleado", idEmpleado).uniqueResult();
+
+		} finally {
+			session.close();
+		}
+		return objeto;
+	}
+    
     
     
 }

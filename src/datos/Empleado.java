@@ -4,6 +4,7 @@ import java.util.Set;
 
 public class Empleado extends Persona {
 	
+	private Rol rol;
 	private Set<Especialidad> especialidades;
 	private long cuil;
 	private boolean estaDisponible;
