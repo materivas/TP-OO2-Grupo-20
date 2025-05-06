@@ -3,8 +3,6 @@ package negocio;
 import java.time.LocalDate;
 import java.util.List;
 
-import org.hibernate.HibernateException;
-
 import dao.TurnoDao;
 import datos.Cliente;
 import datos.Detalle;
@@ -16,8 +14,8 @@ import datos.Turno;
 public class TurnoABM {
 	TurnoDao dao = new TurnoDao();
 	
-	public int agregar(LocalDate fechaHora, Detalle idDetalle, Cliente idCliente, Empleado idEmpleado, Servicio idServicio) {
-		Turno t = new Turno(fechaHora,  idDetalle,  idCliente,  idEmpleado,  idServicio);
+	public int agregar(LocalDate fechaHora, Detalle idDetalle, Cliente idCliente, Empleado idEmpleado,  Servicio idServicio) {
+		Turno t = new Turno(fechaHora,  idDetalle,  idCliente, idEmpleado, idServicio);
 		return dao.agregar(t);
 	}
 	

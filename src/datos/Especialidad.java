@@ -1,7 +1,6 @@
 package datos;
 
 import java.util.Set;
-import java.util.Objects;
 
 
 public class Especialidad {

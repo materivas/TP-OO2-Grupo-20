@@ -6,7 +6,6 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import datos.Detalle;
-import datos.Turno;
 
 public class DetalleDao {
 	private static Session session;

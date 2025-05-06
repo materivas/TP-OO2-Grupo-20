@@ -10,7 +10,6 @@
         <property name="descripcion" column="descripcion" type="String"/>
         <property name="duracion" column="duracion" type="int"/>
         <property name="precio" column="precio" type="double"/>
-        <many-to-one name="turno" class="datos.Turno" column="idTurno"
-        not-null="true" />
+        <many-to-one name="turno" class="datos.Turno" column="idTurno" not-null="true" />
     </class>
 </hibernate-mapping>

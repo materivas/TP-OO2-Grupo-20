@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="modelo.Persona" table="persona" abstract="true">
+    <class name="datos.Persona" table="persona" abstract="true">
         <id name="idPersona" column="id_persona">
             <generator class="identity"/>
         </id>
@@ -11,8 +11,19 @@
         <property name="apellido" column="apellido"/>
         <property name="dni" column="dni"/>
         <property name="email" column="email"/>
-        <property name="fechaDeNacimiento" column="fechaDeNacimiento" type="localDate"/>
+        <property name="fechaDeNacimiento" column="fechaDeNacimiento" type="java.time.LocalDate"/>
         <property name="obraSocial" column="obraSocial" type="boolean"/>
+        
+      	<joined-subclass name="datos.Cliente" extends="datos.Persona" table="cliente">
+   	    	<key column="idPersona"/> 
+      		<property name="estado" column="estado" type="boolean"/>
+      		<!-- relación con turno -->
+      		<set name="turnos" inverse="true" cascade="all">
+         		<key column="idCliente"/> 
+         		<one-to-many class="datos.Turno"/> 
+      		</set>
+      	</joined-subclass>
+    
+    
     </class>
 </hibernate-mapping>
-

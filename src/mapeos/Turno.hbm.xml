@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+	
 <hibernate-mapping>
-
-<class name="datos.Turno" table="turno">
+   <class name="datos.Turno" table="turno">
     <id column="idTurno" name="idTurno">
       <generator class="identity"/>
     </id>
-    <property column="fechaHora" name="fechaHora" type="LocalDate"/>
-    <property column="idDetalle" name="idDetalle" type="Detalle"/>
-    <property column="idCliente" name="idCliente" type="Cliente"/>
-    <property column="idEmpleado" name="idEmpleado" type="Empleado"/>
-    <property column="idServicio" name="idServicio" type="Servicio"/>
-    <one-to-one name="detalle" class="datos.Detalle" ></one-to-one>
-    <one-to-many name="servicio" class="datos.Servicio" ></one-to-many>
-  </class>    
+
+    <property name="fechaHora" column="fechaHora"  type="timestamp"/>
+
+    <one-to-one name="idDetalle" class="datos.Detalle"/>
+	<many-to-one name="idCliente" class="datos.Cliente" column="idCliente"/>
+	<many-to-one name="idEmpleado" class="datos.Empleado" column="idEmpleado"/>	
+	<many-to-one name="idServicio" class="datos.Servicio" column="idServicio"/>
+
+	
+  </class>
 </hibernate-mapping>
+

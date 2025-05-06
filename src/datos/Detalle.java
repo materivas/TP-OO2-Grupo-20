@@ -7,6 +7,7 @@ public class Detalle {
 	private boolean estadoTurno;
 	private LocalDate fecha;
 	private String descripcion;
+	private Turno turno;
 	
 //Constructor
 	
@@ -46,7 +47,15 @@ public class Detalle {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+	
+	public Turno getTurno() {
+		return turno;
+	}
 
+	public void setTurno(Turno turno) {
+		this.turno = turno;
+	}
+	
 //Equals
 	
 
@@ -70,7 +79,8 @@ public class Detalle {
 	public String toString() {
 		return "Detalle [estadoTurno=" + estadoTurno + ", fecha=" + fecha + ", descripcion=" + descripcion + "]";
 	}
-	
+
+
 	
 }
 
