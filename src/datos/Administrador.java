@@ -7,12 +7,15 @@ public class Administrador extends Persona {
     private String password;
     private Rol rol;
 
-    
-    
+    public Administrador() {
+ 		super();
+ 	}
+
     
     // Getters y Setters
 
-    public String getUser() {
+ 
+	public String getUser() {
         return user;
     }
 

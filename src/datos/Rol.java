@@ -5,7 +5,12 @@ public class Rol {
     private Integer idRol;
     private String nombreRol;
 
-    // Getters y Setters
+   
+    public Rol() {
+		super();
+	}
+
+	// Getters y Setters
     public Integer getIdRol() {
         return idRol;
     }

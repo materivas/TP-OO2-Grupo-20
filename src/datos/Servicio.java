@@ -19,6 +19,14 @@ public class Servicio {
 		this.precio=precio;
 	}
 
+	
+	
+	public Servicio() {
+		super();
+	}
+
+
+
 	//Getters y Setters
 	
 	public long getIdServicio() {

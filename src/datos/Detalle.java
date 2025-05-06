@@ -17,6 +17,13 @@ public class Detalle {
 		this.fecha=fecha;
 		this.descripcion=descripcion;
 		}
+	
+	
+	public Detalle() {
+		super();
+	}
+
+
 //Getters y Setters
 
 	public boolean isEstadoTurno() {

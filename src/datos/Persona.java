@@ -13,7 +13,13 @@ public abstract class Persona {
     private Boolean obraSocial;
 
     
-    // Getters y Setters
+    
+    
+    public Persona() {
+		super();
+	}
+
+	// Getters y Setters
     public Long getIdPersona() {
         return idPersona;
     }
