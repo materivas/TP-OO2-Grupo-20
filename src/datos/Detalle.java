@@ -1,9 +1,9 @@
 package datos;
 import java.time.LocalDate;
-import java.util.Objects;
 
 
 public class Detalle {
+	 private Long idTurno;
 	private boolean estadoTurno;
 	private LocalDate fecha;
 	private String descripcion;
@@ -11,20 +11,31 @@ public class Detalle {
 	
 //Constructor
 	
-	public Detalle(boolean estadoTurno,LocalDate fecha, String descripcion){
+	public Detalle(Long idTurno, boolean estadoTurno, LocalDate fecha, String descripcion, Turno turno) {
 		super();
-		this.estadoTurno=estadoTurno;
-		this.fecha=fecha;
-		this.descripcion=descripcion;
-		}
-	
+		this.idTurno = idTurno;
+		this.estadoTurno = estadoTurno;
+		this.fecha = fecha;
+		this.descripcion = descripcion;
+		this.turno = turno;
+	}
 	
 	public Detalle() {
 		super();
 	}
 
 
+
 //Getters y Setters
+	public Long getIdTurno() {
+		return idTurno;
+	}
+
+
+	public void setIdTurno(Long idTurno) {
+		this.idTurno = idTurno;
+	}
+
 
 	public boolean isEstadoTurno() {
 		return estadoTurno;
@@ -54,39 +65,27 @@ public class Detalle {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	
+
+
 	public Turno getTurno() {
 		return turno;
 	}
 
+
 	public void setTurno(Turno turno) {
 		this.turno = turno;
 	}
+
+
+
 	
-//Equals
-	
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Detalle other = (Detalle) obj;
-		return Objects.equals(descripcion, other.descripcion) && estadoTurno == other.estadoTurno
-				&& Objects.equals(fecha, other.fecha);
-	}
-
-
 	//ToString
-	
 	@Override
 	public String toString() {
-		return "Detalle [estadoTurno=" + estadoTurno + ", fecha=" + fecha + ", descripcion=" + descripcion + "]";
+		return "Detalle [idTurno=" + idTurno + ", estadoTurno=" + estadoTurno + ", fecha=" + fecha + ", descripcion="
+				+ descripcion + ", turno=" + turno + "]";
 	}
-
+	
 
 	
 }

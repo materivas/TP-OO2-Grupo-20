@@ -10,7 +10,10 @@
 
     <property name="fechaHora" column="fechaHora"  type="timestamp"/>
 
+	    <!-- Relación one-to-one con Detalle -->
     <one-to-one name="idDetalle" class="datos.Detalle"/>
+    
+     <!-- Relaciones many-to-one -->
 	<many-to-one name="idCliente" class="datos.Cliente" column="idCliente"/>
 	<many-to-one name="idEmpleado" class="datos.Empleado" column="idEmpleado"/>	
 	<many-to-one name="idServicio" class="datos.Servicio" column="idServicio"/>

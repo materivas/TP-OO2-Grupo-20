@@ -6,10 +6,18 @@
         <id name="idServicio" column="idServicio">
             <generator class="identity"/>
         </id>
-        <property name="nombreServicio" column="nombreServicio" type="String"/>
-        <property name="descripcion" column="descripcion" type="String"/>
+        <property name="nombreServicio" column="nombreServicio" type="string"/>
+        <property name="descripcion" column="descripcion" type="string"/>
         <property name="duracion" column="duracion" type="int"/>
         <property name="precio" column="precio" type="double"/>
-        <many-to-one name="turno" class="datos.Turno" column="idTurno" not-null="true" />
+       
+         <!-- Relación inversa con Turno  (UN SOLO servicio esta relacion a MUCHOS turnos )-->
+        <set name="turnos" inverse="true" cascade="none" lazy="true">
+            <key column="idServicio"/>
+            <one-to-many class="datos.Turno"/>
+        </set>
+       
+       
+       
     </class>
 </hibernate-mapping>

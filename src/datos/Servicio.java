@@ -1,6 +1,7 @@
 package datos;
 
 import java.util.Objects;
+import java.util.Set;
 
 public class Servicio {
 	private long idServicio;
@@ -9,6 +10,10 @@ public class Servicio {
 	private int duracion;
 	private double precio;
 	
+	  private Set<Turno> turnos; //funciona igual sin incializar, probar si no genera error despues interactuando con la base de datos
+	  //private Set<Turno> turnos = new HashSet<Turno>(); // inicializa la coleccion
+	  
+	  
 	//Constructor
 	
 	public Servicio(String nombreServicio, String descripcion, int duracion, double precio) {
@@ -20,7 +25,6 @@ public class Servicio {
 	}
 
 	
-	
 	public Servicio() {
 		super();
 	}
@@ -28,6 +32,17 @@ public class Servicio {
 
 
 	//Getters y Setters
+	
+	
+    public Set<Turno> getTurnos() {
+        return turnos;
+    }
+
+    public void setTurnos(Set<Turno> turnos) {
+        this.turnos = turnos;
+    }
+	
+	
 	
 	public long getIdServicio() {
 		return idServicio;

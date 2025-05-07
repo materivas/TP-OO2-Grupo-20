@@ -3,12 +3,17 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="datos.Detalle" table="detalle">
-        <id name="turno" column="idturno">
-            <generator class="foreign"/>
+        <id name="idTurno" column="idTurno" type="long">
+            <generator class="foreign">
+                <param name="property">turno</param>
+            </generator>
         </id>
+        
+        
         <property name="estadoTurno" column="estadoTurno" type="boolean"/>
-        <property name="fecha" column="fecha" type="localDate"/>
-        <property name="descripcion" column="descripcion" type="String"/>
+        <property name="fecha" column="fecha" type="date"/>
+        <property name="descripcion" column="descripcion" type="string"/>
+        
         <one-to-one name="turno" class="datos.Turno" constrained="true" />
     </class>
 </hibernate-mapping>
