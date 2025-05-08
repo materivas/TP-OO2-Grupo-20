@@ -10,11 +10,18 @@ public class Administrador extends Persona {
     public Administrador() {
  		super();
  	}
+    
+    public Administrador(String user, String password, Rol rol) {
+		super();
+		this.user = user;
+		this.password = password;
+		this.rol = rol;
+	}
 
     
+    
+    
     // Getters y Setters
-
- 
 	public String getUser() {
         return user;
     }

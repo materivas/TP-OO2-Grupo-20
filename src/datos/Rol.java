@@ -2,16 +2,18 @@ package datos;
 
 public class Rol {
 
-    private Integer idRol;
+    private int idRol;
     private String nombreRol;
-
-   
-    public Rol() {
+    
+    public Rol() {}
+    
+    public Rol(String nombreRol) {
 		super();
+		this.nombreRol = nombreRol;
 	}
 
 	// Getters y Setters
-    public Integer getIdRol() {
+    public int getIdRol() {
         return idRol;
     }
 
@@ -31,6 +33,9 @@ public class Rol {
 	public String toString() {
 		return "Rol [idRol=" + idRol + ", nombreRol=" + nombreRol + "]";
 	}
-    
-    
+
+
+
+
+
 }

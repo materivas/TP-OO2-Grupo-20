@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
 <hibernate-mapping>
     <class name="datos.Persona" table="persona" abstract="true">
         <id name="idPersona" column="id_persona">
@@ -14,45 +15,38 @@
         <property name="fechaDeNacimiento" column="fechaDeNacimiento" type="java.time.LocalDate"/>
         <property name="obraSocial" column="obraSocial" type="boolean"/>
         
-        
-       <!--Cliente-->
-      	<joined-subclass name="datos.Cliente" extends="datos.Persona" table="cliente">
-   	    	<key column="idPersona"/> 
-      		<property name="estado" column="estado" type="boolean"/>
-      		<set name="turnos" inverse="true" cascade="all">
-         		<key column="idCliente"/> 
-         		<one-to-many class="datos.Turno"/> 
-      		</set>
-      	</joined-subclass>
-      	
-      	  <!-- MAPEO DE EMPLEADO CON TABLA EMPLEADO -->
-      	<joined-subclass name="datos.Empleado" extends="datos.Persona" table="empleado">
-   	    	<key column="idPersona"/>
+        <!--Administrador-->
+        <joined-subclass name="datos.Administrador" table="administrador">
+            <key column="id_persona"/>
+            <property name="user" column="user"/>
+            <property name="password" column="password"/>
+            <many-to-one name="rol" class="datos.Rol" column="id_rol" not-null="true" lazy="false"/>
+        </joined-subclass>
+
+		<!--Empleado-->
+        <joined-subclass name="datos.Empleado" extends="datos.Persona" table="empleado">
+   	    	<key column="id_persona"/>
       		<property name="cuil" column="cuil" type="long"/>
       		<property name="estaDisponible" column="estaDisponible" type="boolean"/>
       		
       		<!-- Relación many-to-many con Especialidad -->
       		<set table="empleadoxespecialidad" name="especialidades" outer-join="true">
-			    <key column="idEmpleado"/>
-			    <many-to-many column="idEspecialidad" class="datos.Especialidad"/>
+			    <key column="id_empleado"/>
+			    <many-to-many column="id_especialidad" class="datos.Especialidad"/>
 			</set>
 			
 			<!-- Relación many-to-one con Rol -->
-			<many-to-one 
-                name="rol" 
-                column="idRol" 
-                class="datos.Rol"
-                not-null="true"
-            />
+			<many-to-one name="rol" column="idRol" class="datos.Rol" not-null="true"/>
+      	</joined-subclass> 
+
+		<!--Cliente-->
+      	<joined-subclass name="datos.Cliente" extends="datos.Persona" table="cliente">
+   	    	<key column="idPersona"/> 
+      		<property name="estado" column="estado" type="boolean"/>
+      		<set name="turnos" inverse="true" cascade="all">
+         		<key column="id_cliente"/> 
+         		<one-to-many class="datos.Turno"/> 
+      		</set>
       	</joined-subclass>
-      	
-    	 <!-- MAPEO DE ADMINISTRADOR CON TABLA ADMINISTRADOR -->
-        <joined-subclass name="datos.Administrador" table="administrador">
-            <key column="id_persona"/>
-            <property name="user" column="user" type="string"/>
-            <property name="password" column="password" type="string"/>
-            <many-to-one name="rol" class="datos.Rol" column="id_rol" not-null="true"/>
-        </joined-subclass>
-    
     </class>
 </hibernate-mapping>

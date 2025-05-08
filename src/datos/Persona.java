@@ -11,12 +11,12 @@ public abstract class Persona {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPersona;
 	
-    private String nombre;
-    private String apellido;
-    private int dni;
-    private String email;
-    private LocalDate fechaDeNacimiento;
-    private Boolean obraSocial;
+    protected String nombre;
+    protected String apellido;
+    protected int dni;
+    protected String email;
+    protected LocalDate fechaDeNacimiento;
+    protected Boolean obraSocial;
 
     public Persona() {}
     
