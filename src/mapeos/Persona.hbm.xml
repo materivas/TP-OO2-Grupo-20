@@ -15,17 +15,15 @@
         <property name="obraSocial" column="obraSocial" type="boolean"/>
         
         
-        <!-- MAPEO DE CLIENTE CON TABLA CLIENTE -->
+       <!--Cliente-->
       	<joined-subclass name="datos.Cliente" extends="datos.Persona" table="cliente">
    	    	<key column="idPersona"/> 
       		<property name="estado" column="estado" type="boolean"/>
-      		<!-- relación con turno -->
       		<set name="turnos" inverse="true" cascade="all">
          		<key column="idCliente"/> 
          		<one-to-many class="datos.Turno"/> 
       		</set>
       	</joined-subclass>
-      	
       	
       	  <!-- MAPEO DE EMPLEADO CON TABLA EMPLEADO -->
       	<joined-subclass name="datos.Empleado" extends="datos.Persona" table="empleado">

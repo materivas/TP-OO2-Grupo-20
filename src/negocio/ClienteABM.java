@@ -1,46 +1,42 @@
 package negocio;
 
-import java.time.LocalDate;
-import java.util.List;
-
-import dao.ClienteDao;
 import datos.Cliente;
-import datos.Servicio;
-import datos.Turno;
+import dao.ClienteDao;
 
 public class ClienteABM {
-	private ClienteDao dao = ClienteDao.getInstance();
+	private ClienteDao dao = new ClienteDao();
 
-	public int agregar(Cliente cliente) {
-		return dao.agregar(cliente);
-	}
-	
-	public void actualizar(Cliente cliente) {
-		dao.actualizar(cliente);
-	}
+	 public int agregar(Cliente cliente) {
+		 return dao.agregar(cliente);
+	 }
 
-	public void eliminar(Cliente cliente) {
-		dao.eliminar(cliente);
-	}
+	public void modificar(Cliente c) {
+		Cliente existente = dao.traerClientePorDni(c.getDni());
 
-	public Cliente traer(int idCliente) {
-		return dao.traer(idCliente);
+		if (existente != null && existente.getIdPersona() != c.getIdPersona()) {
+			throw new RuntimeException("Ya existe otro cliente con el DNI: " + c.getDni());
+		}
+
+		dao.actualizar(c);
 	}
 
-	public List<Cliente> traer() {
-		return dao.traer();
+	public void eliminar(int idCliente) {
+		Cliente c = dao.traerCliente(idCliente);
+
+		if (c == null) {
+			throw new RuntimeException("No existe un cliente con ID: " + idCliente);
+		}
+
+		dao.eliminar(c);
 	}
 
-	public List<Turno> verTurnos(Cliente cliente) {
-		return dao.verTurnos(cliente);
-	}
+	public Cliente traerCliente(int idCliente) {
+		Cliente c = dao.traerCliente(idCliente);
 
-	public Turno solicitarTurno(Cliente cliente, Servicio servicio, LocalDate fechaDeseada) {
-		return dao.solicitarTurno(cliente, servicio, fechaDeseada);
-	}
+		if (c == null) {
+			throw new RuntimeException("No existe un cliente con ID: " + idCliente);
+		}
 
-
-	public void actualizarTurno(Turno turno) {
-		dao.actualizarTurno(turno);
+		return c;
 	}
 }

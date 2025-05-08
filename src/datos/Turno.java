@@ -1,24 +1,25 @@
 package datos;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 public class Turno {
 	private long idTurno;
-	private LocalDate fechaHora;
-	private Detalle idDetalle;
-	private Cliente idCliente;
-	private Empleado idEmpleado;
-	private Servicio idServicio;
-	
+	private Date fechaHora;
+	private Detalle detalle;
+	private Cliente cliente;
+	private Empleado empleado;
+	private Servicio servicio;
+
 	public Turno() {}
-	
-	public Turno(LocalDate fechaHora, Detalle idDetalle, Cliente idCliente, Empleado idEmpleado, Servicio idServicio) {
+
+	public Turno(Date fechaHora, Detalle detalle, Cliente cliente, Empleado empleado,
+			Servicio servicio) {
 		super();
 		this.fechaHora = fechaHora;
-		this.idDetalle = idDetalle;
-		this.idCliente = idCliente;
-		this.idEmpleado = idEmpleado;
-		this.idServicio = idServicio;
+		this.detalle = detalle;
+		this.cliente = cliente;
+		this.empleado = empleado;
+		this.servicio = servicio;
 	}
 
 	public long getIdTurno() {
@@ -29,45 +30,50 @@ public class Turno {
 		this.idTurno = idTurno;
 	}
 
-	public LocalDate getFechaHora() {
+	public Date getFechaHora() {
 		return fechaHora;
 	}
 
-	public void setFechaHora(LocalDate fechaHora) {
-		this.fechaHora = fechaHora;
+	public void setFechaHora(Date fechaDeseada) {
+		this.fechaHora = fechaDeseada;
 	}
 
-	public Detalle getIdDetalle() {
-		return idDetalle;
+	public Detalle getDetalle() {
+		return detalle;
 	}
 
-	public void setIdDetalle(Detalle idDetalle) {
-		this.idDetalle = idDetalle;
+	public void setDetalle(Detalle detalle) {
+		this.detalle = detalle;
 	}
 
-	public Cliente getIdCliente() {
-		return idCliente;
+	public Cliente getCliente() {
+		return cliente;
 	}
 
-	public void setIdCliente(Cliente idCliente) {
-		this.idCliente = idCliente;
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
-	public Empleado getIdEmpleado() {
-		return idEmpleado;
+	public Empleado getEmpleado() {
+		return empleado;
 	}
 
-	public void setIdEmpleado(Empleado idEmpleado) {
-		this.idEmpleado = idEmpleado;
+	public void setEmpleado(Empleado empleado) {
+		this.empleado = empleado;
 	}
 
-	public Servicio getIdServicio() {
-		return idServicio;
+	public Servicio getServicio() {
+		return servicio;
 	}
 
-	public void setIdServicio(Servicio idServicio) {
-		this.idServicio = idServicio;
+	public void setServicio(Servicio servicio) {
+		this.servicio = servicio;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Turno [idTurno=" + idTurno + ", fechaHora=" + fechaHora + ", detalle=" + detalle + ", cliente="
+				+ cliente + ", empleado=" + empleado + ", servicio=" + servicio + "]";
+	}
 	
 }

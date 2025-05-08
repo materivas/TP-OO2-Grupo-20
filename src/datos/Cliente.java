@@ -1,24 +1,22 @@
 package datos;
 
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-import datos.Persona;
 
 @SuppressWarnings("unused")
 public class Cliente extends Persona {
 	private Set<Turno> turnos = new HashSet<>();
 	private boolean estado;
-	
+
 	public Cliente() {}
-	
-	public Cliente(List<Turno> turnos, boolean estado) {
-		super();
-		this.turnos = new HashSet<>();
-		this.estado = estado;
+
+	public Cliente(String nombre, String apellido, int dni, String email, LocalDate fechaNacimiento, boolean obraSocial, boolean estado) {
+	    super(nombre, apellido, dni, email, fechaNacimiento, obraSocial);
+	    this.estado = estado;
 	}
-	
+
 	public Set<Turno> getTurnos() {
 	   return turnos;
 	}
@@ -33,6 +31,10 @@ public class Cliente extends Persona {
 	public void setEstado(boolean estado) {
 		this.estado = estado;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "Cliente [turnos=" + turnos + ", estado=" + estado + "]";
+	}
+
 }
