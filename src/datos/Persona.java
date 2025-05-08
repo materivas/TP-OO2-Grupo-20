@@ -2,21 +2,33 @@ package datos;
 
 import java.time.LocalDate;
 
-public abstract class Persona {
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+public abstract class Persona {
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPersona;
+	
     private String nombre;
     private String apellido;
-    private Integer dni;
+    private int dni;
     private String email;
     private LocalDate fechaDeNacimiento;
     private Boolean obraSocial;
 
+    public Persona() {}
     
-    
-    
-    public Persona() {
+    public Persona(String nombre, String apellido, int dni, String email,
+			LocalDate fechaDeNacimiento, Boolean obraSocial) {
 		super();
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.dni = dni;
+		this.email = email;
+		this.fechaDeNacimiento = fechaDeNacimiento;
+		this.obraSocial = obraSocial;
 	}
 
 	// Getters y Setters
@@ -44,11 +56,11 @@ public abstract class Persona {
         this.apellido = apellido;
     }
 
-    public Integer getDni() {
+    public int getDni() {
         return dni;
     }
 
-    public void setDni(Integer dni) {
+    public void setDni(int dni) {
         this.dni = dni;
     }
 
@@ -81,7 +93,7 @@ public abstract class Persona {
 		return "Persona [idPersona=" + idPersona + ", nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni
 				+ ", email=" + email + ", fechaDeNacimiento=" + fechaDeNacimiento + ", obraSocial=" + obraSocial + "]";
 	}
-    
-    
-    
+
+
+
 }

@@ -8,17 +8,17 @@ public class Especialidad {
 	private long idEspecialidad;
 	private String nombre;
 	private Set <Empleado> empleados;
-	
-	
+
+
 	public Especialidad() {
-		
+
 	}
 	public Especialidad(String nombre) {
 		super();
 		this.nombre = nombre;
 	}
-	
-	
+
+
 	public long getIdEspecialidad() {
 		return idEspecialidad;
 	}
@@ -46,11 +46,11 @@ public class Especialidad {
 
 	@Override
 	public String toString() {
-		return "Especialidad [idEspecialidad=" + idEspecialidad + ", nombre=" + nombre 
+		return "Especialidad [idEspecialidad=" + idEspecialidad + ", nombre=" + nombre
 				+ "]";
 	}
-	
-	
-	
-	
+
+
+
+
 }
