@@ -80,7 +80,7 @@ public class TestAgregarEmpleado {
 			e.printStackTrace();
 		}
 		
-		/*System.out.println("-----------------------------------------------\n");
+		System.out.println("-----------------------------------------------\n");
 		System.out.println("--------- ELIMINAMOS AL EMPLEADO CON: ID ----> 6 -------------\n");
 		System.out.println("--------- MOSTRAMOS LA LISTA NUEVAMENTE -------------\n");
 		
@@ -91,7 +91,7 @@ public class TestAgregarEmpleado {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		*/
+		
 		System.out.println("-----------------------------------------------\n");
 		System.out.println("--------- MODIFICAMOS EL MAIL DEL EMPLEADO: ID ----> 2 -------------\n");
 		System.out.println("--------- MOSTRAMOS LA LISTA NUEVAMENTE -------------\n");
@@ -106,35 +106,6 @@ public class TestAgregarEmpleado {
 			e.printStackTrace();
 		}
 		
-		
-		
-	/*	// Ejemplo 1: Modificar solo nombre y apellido
-		Empleado cambios1 = new Empleado();
-		cambios1.setNombre("NuevoNombre");
-		cambios1.setApellido("NuevoApellido");
-		Rol rol = rolABM.traerRol("Usuario");
-		cambios1.setRol(rol);
-		try {
-			empleadoABM.modificar(empleadoABM.traerEmpleadoID(1L).getIdPersona(), cambios1);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		// Ejemplo 2: Modificar solo email
-		Empleado cambios2 = new Empleado();
-		cambios2.setEmail("nuevo@email.com");
-		empleadoABM.modificar(idEmpleado, cambios2);
-
-		// Ejemplo 3: Modificar varios campos
-		Empleado cambios3 = new Empleado();
-		cambios3.setNombre("OtroNombre");
-		cambios3.setEmail("otro@email.com");
-		cambios3.setEstaDisponible(false);
-		empleadoABM.modificar(idEmpleado, cambios3);
-		
-		
-		*/
 		
 		System.out.println("--------- MODIFICAMOS EL NOMBRE DEL EMPLEADO ID ----> 1 -------------\n");
 

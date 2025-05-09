@@ -49,7 +49,7 @@ public class TestAgregarEspecialidad {
 			empleadoABM.agregarEspecialidad(1L, especialidadABM.traerEspecialidad(2L) );
 			empleadoABM.agregarEspecialidad(2L, especialidadABM.traerEspecialidad(1L) );
 			empleadoABM.agregarEspecialidad(3L, especialidadABM.traerEspecialidad(3L) );
-			empleadoABM.agregarEspecialidad(5L, especialidadABM.traerEspecialidad(4L) );
+			empleadoABM.agregarEspecialidad(4L, especialidadABM.traerEspecialidad(4L) );
 			empleadoABM.agregarEspecialidad(5L, especialidadABM.traerEspecialidad(3L) );
 			
 			System.out.println("EMPLEADO: " + empleadoABM.traerEmpleadoID(1L).getNombre() + "  CUIL: " + empleadoABM.traerEmpleadoID(1L).getCuil());
