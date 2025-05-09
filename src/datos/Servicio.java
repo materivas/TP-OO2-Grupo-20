@@ -1,7 +1,6 @@
 package datos;
 
 import java.util.Objects;
-import java.util.Set;
 
 public class Servicio {
 	private long idServicio;
@@ -9,13 +8,14 @@ public class Servicio {
 	private String descripcion;
 	private int duracion;
 	private double precio;
-	
-	  private Set<Turno> turnos; //funciona igual sin incializar, probar si no genera error despues interactuando con la base de datos
-	  //private Set<Turno> turnos = new HashSet<Turno>(); // inicializa la coleccion
-	  
-	  
+
 	//Constructor
-	
+	public Servicio () {
+		
+		
+	}
+
+
 	public Servicio(String nombreServicio, String descripcion, int duracion, double precio) {
 		super();
 		this.nombreServicio=nombreServicio;
@@ -24,26 +24,8 @@ public class Servicio {
 		this.precio=precio;
 	}
 
-	
-	public Servicio() {
-		super();
-	}
-
-
-
 	//Getters y Setters
-	
-	
-    public Set<Turno> getTurnos() {
-        return turnos;
-    }
 
-    public void setTurnos(Set<Turno> turnos) {
-        this.turnos = turnos;
-    }
-	
-	
-	
 	public long getIdServicio() {
 		return idServicio;
 	}
@@ -84,8 +66,17 @@ public class Servicio {
 		this.precio = precio;
 	}
 
-	//Equals
+	
 
+//ToString
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(descripcion, duracion, idServicio, nombreServicio, precio);
+	}
+
+
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -99,13 +90,13 @@ public class Servicio {
 				&& Double.doubleToLongBits(precio) == Double.doubleToLongBits(other.precio);
 	}
 
-//ToString
-	
+
+	@Override
 	public String toString() {
 		return "Servicio [idServicio=" + idServicio + ", nombreServicio=" + nombreServicio + ", descripcion="
 				+ descripcion + ", duracion=" + duracion + ", precio=" + precio + "]";
 	}
-	
+
 	//Metodos
 	
 	

@@ -1,17 +1,19 @@
 package dao;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+
 import datos.Servicio;
 
 
 public class ServicioDao {
 	private static Session session;
 	private Transaction tx;
-	
+
 	private void iniciaOperacion() throws HibernateException {
 		session = HibernateUtil.getSessionFactory().openSession();
 		tx = session.beginTransaction();
@@ -21,8 +23,8 @@ public class ServicioDao {
 		tx.rollback();
 		throw new HibernateException("ERROR en la capa de acceso a datos", he);
 		}
-	
-	
+
+
 	public int agregar(Servicio objeto) {
 		int id = 0;
 		try {
@@ -36,7 +38,7 @@ public class ServicioDao {
 		}
 		return id;
 		}
-	
+
 	public void actualizar(Servicio objeto) {
 		try {
 		iniciaOperacion();
@@ -48,7 +50,7 @@ public class ServicioDao {
 		session.close();
 		}
 		}
-	
+
 	public void eliminar(Servicio objeto) {
 		try {
 		iniciaOperacion();
@@ -60,20 +62,20 @@ public class ServicioDao {
 		session.close();
 		}
 		}
-	
+
 	public Servicio traer(long idServicio) {
 		Servicio objeto = null;
 		try {
 		iniciaOperacion();
-		objeto = (Servicio) session.get(Servicio.class, idServicio);
+		objeto = session.get(Servicio.class, idServicio);
 		} finally {
 		session.close();
 		}
 		return objeto;
 		}
-	
+
 	public List<Servicio> traer() {
-		List<Servicio> lista = new ArrayList<Servicio>();
+		List<Servicio> lista = new ArrayList<>();
 		try {
 		iniciaOperacion();
 		Query<Servicio> query = session.createQuery("from Servicio s order bys.nombreServicio asc", Servicio.class);
