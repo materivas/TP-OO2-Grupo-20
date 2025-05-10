@@ -19,7 +19,7 @@ public class TestAgregarEspecialidad {
 		
 		
 		
-		System.out.println("----------------- CARGAMOS LAS ESPECIALIDADES ---------------- \n");
+		System.out.println("----------------- CARGAMOS LAS ESPECIALIDADES ----------------- \n");
 		
 		try {
 			
