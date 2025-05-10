@@ -61,7 +61,7 @@ public class ClienteDao {
         }
     }
 
-    public Cliente traerCliente(int idCliente) {
+    public Cliente traerCliente(long idCliente) {
     	Cliente objeto = null;
 
         try {

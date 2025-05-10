@@ -22,7 +22,7 @@ public class TestCliente {
             // 1. Crear cliente nuevo
             System.out.println(">>> Creando cliente...");
             Cliente c = new Cliente("Mateo", "Rivas", 45824137, "mateo@mail.com",LocalDate.of(2004, 5, 30), true, true); // estado = true
-            int idCliente = clienteABM.agregar(c);
+            long idCliente = clienteABM.agregar(c);
             System.out.println("Cliente creado con ID: " + idCliente);
 
             // 2. Traer cliente y mostrar
@@ -37,10 +37,12 @@ public class TestCliente {
 
             Cliente clienteModificado = clienteABM.traerCliente(idCliente);
             System.out.println("Cliente modificado, estado: " + clienteModificado.isEstado());
-/*
+
+            
+        /*    
             // 4. Probar agregar cliente duplicado por DNI
             System.out.println(">>> Intentando agregar cliente con DNI duplicado...");
-            Cliente duplicado = new Cliente("Mateo", "Rivas", 45824137, "otro@mail.com", LocalDate.of(2004, 5, 30), true, true,turnos);
+            Cliente duplicado = new Cliente("Mateo", "Rivas", 45824137, "otro@mail.com", LocalDate.of(2004, 5, 30), true, true);
             try {
                 clienteABM.agregar(duplicado);
             } catch (RuntimeException e) {
@@ -59,9 +61,16 @@ public class TestCliente {
             } catch (RuntimeException e) {
                 System.out.println("Excepción esperada al traer cliente eliminado: " + e.getMessage());
             }
-*/
+
+            */
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
+        
+        
+        
     }
+    
+    
 }
