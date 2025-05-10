@@ -83,7 +83,6 @@ public class TestCrearTurnoParaEmpleado {
 
 		    	System.out.println("-->>>>>>>>>>>>>>>3. CARGAMOS LOS TURNOS SIN DETALLE<<<<<<<<<<<<<<<<<<-- ");
 	            
-		
 
 		    	Date fechaHora1 = Date.from(LocalDateTime.of(2025, 5, 8, 10, 15, 30).atZone(ZoneId.systemDefault()).toInstant());
 		    	Turno nuevoTurno1 = new Turno();

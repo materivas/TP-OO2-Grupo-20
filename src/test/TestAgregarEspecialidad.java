@@ -18,7 +18,6 @@ public class TestAgregarEspecialidad {
 		Empleado e1 = new Empleado();
 		
 		
-		
 		System.out.println("----------------- CARGAMOS LAS ESPECIALIDADES ----------------- \n");
 		
 		try {

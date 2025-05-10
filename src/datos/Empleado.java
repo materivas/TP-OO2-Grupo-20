@@ -21,6 +21,7 @@ public class Empleado extends Persona {
 	}
 
 	
+	
 	public Empleado(String nombre, String apellido, int dni, String email, LocalDate fechaNacimiento, boolean obraSocial,Rol rol, long cuil, boolean estaDisponible) {
 		super(nombre, apellido, dni, email, fechaNacimiento, obraSocial);
 		this.rol = rol;

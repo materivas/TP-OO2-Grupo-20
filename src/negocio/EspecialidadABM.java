@@ -15,7 +15,6 @@ public class EspecialidadABM {
 	private EspecialidadDao dao;
 	
 	
-	//Falta agregar, eliminar.
 
 	public EspecialidadABM() {
 		this.dao = new EspecialidadDao();

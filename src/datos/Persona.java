@@ -1,6 +1,7 @@
 package datos;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,17 +12,17 @@ public abstract class Persona {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPersona;
 	
-    protected String nombre;
-    protected String apellido;
-    protected int dni;
-    protected String email;
-    protected LocalDate fechaDeNacimiento;
-    protected Boolean obraSocial;
+    private String nombre;
+    private String apellido;
+    private int dni;
+    private String email;
+    private LocalDate fechaDeNacimiento;
+    private boolean obraSocial;
 
     public Persona() {}
     
     public Persona(String nombre, String apellido, int dni, String email,
-			LocalDate fechaDeNacimiento, Boolean obraSocial) {
+			LocalDate fechaDeNacimiento, boolean obraSocial) {
 		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -80,19 +81,48 @@ public abstract class Persona {
         this.fechaDeNacimiento = fechaDeNacimiento;
     }
 
-    public Boolean getObraSocial() {
+ 
+    
+    /* public boolean isObraSocial() {
         return obraSocial;
-    }
+    }*/
 
-    public void setObraSocial(Boolean obraSocial) {
-        this.obraSocial = obraSocial;
-    }
+	public boolean isObraSocial() {
+		return obraSocial;
+	}
+
+	public void setObraSocial(boolean obraSocial) {
+		this.obraSocial = obraSocial;
+	}
 
 	@Override
 	public String toString() {
 		return "Persona [idPersona=" + idPersona + ", nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni
 				+ ", email=" + email + ", fechaDeNacimiento=" + fechaDeNacimiento + ", obraSocial=" + obraSocial + "]";
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(apellido, dni, email, fechaDeNacimiento, idPersona, nombre, obraSocial);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Persona other = (Persona) obj;
+		return Objects.equals(apellido, other.apellido) && dni == other.dni && Objects.equals(email, other.email)
+				&& Objects.equals(fechaDeNacimiento, other.fechaDeNacimiento)
+				&& Objects.equals(idPersona, other.idPersona) && Objects.equals(nombre, other.nombre)
+				&& obraSocial == other.obraSocial;
+	}
+	
+	
+	
 
 
 

@@ -14,6 +14,7 @@ import datos.Rol;
 import datos.Turno;
 
 
+
 public class EmpleadoDao {
 	private static Session session;
     private Transaction tx;

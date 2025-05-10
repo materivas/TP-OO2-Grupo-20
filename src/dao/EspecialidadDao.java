@@ -25,6 +25,7 @@ public class EspecialidadDao {
         throw new HibernateException("ERROR en la capa de acceso a datos", he);
     }
 
+    
     public int agregar(Especialidad objeto) {
         int id = 0;
         try {
