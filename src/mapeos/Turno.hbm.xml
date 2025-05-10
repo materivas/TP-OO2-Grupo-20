@@ -3,16 +3,16 @@
 	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
    	<class name="datos.Turno" table="turno">
-    <id name="idTurno" column="id_turno">
+    <id name="idTurno" column="idTurno">
       <generator class="identity"/>
     </id>
     
 	<property name="fechaHora" column="fecha_hora" type="timestamp"/>
 
     <one-to-one name="detalle" class="datos.Detalle"/>
-	<many-to-one name="cliente" class="datos.Cliente" column="id_cliente"/>
-	<many-to-one name="empleado" class="datos.Empleado" column="id_empleado"/>	
-	<many-to-one name="servicio" class="datos.Servicio" column="id_servicio"/>
+	<many-to-one name="cliente" class="datos.Cliente" column="idCliente"/>
+	<many-to-one name="empleado" class="datos.Empleado" column="idEmpleado"/>	
+	<many-to-one name="servicio" class="datos.Servicio" column="idServicio"/>
   </class>
 </hibernate-mapping>
 

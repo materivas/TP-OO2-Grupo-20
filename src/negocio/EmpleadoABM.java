@@ -1,11 +1,16 @@
 package negocio;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import dao.EmpleadoDao;
+import dao.RolDao;
+
 import datos.Empleado;
 import datos.Rol;
+import datos.Turno;
+import datos.Turno;
 import datos.Especialidad;
 
 
@@ -29,7 +34,7 @@ public class EmpleadoABM {
 	}
 
 	public Empleado traerEmpleadoCuil(long cuil) throws Exception {
-		Empleado e = dao.traerEmpleado(cuil);
+		Empleado e = dao.traerEmpleadoCuil(cuil);
         if (e == null) {
             throw new Exception("No existe empleado con CUIL: " + cuil);
         }
@@ -84,6 +89,18 @@ public class EmpleadoABM {
         
         return dao.agregarEspecialidad(empleado, especialidad);
     }
+	
+	public int agregarTurno(long idEmpleado, Turno turno) throws Exception {
+	    Empleado empleado = dao.traerEmpleado(idEmpleado);
+
+	    if (empleado == null) {
+	        throw new Exception("No existe el empleado con ID: " + idEmpleado);
+	    }
+
+	    return dao.agregarTurno(empleado, turno);
+	}
+	
+	
 
 	public void modificar(Empleado e) throws Exception {
         // Verificar si el empleado existe
@@ -93,7 +110,7 @@ public class EmpleadoABM {
         }
         
         // Verificar si otro empleado tiene el mismo CUIL
-        Empleado conMismoCuil = dao.traerEmpleado(e.getCuil());
+        Empleado conMismoCuil = dao.traerEmpleadoCuil(e.getCuil());
         if (conMismoCuil != null && !conMismoCuil.getIdPersona().equals(e.getIdPersona())) {
             throw new Exception("Ya existe otro empleado con CUIL: " + e.getCuil());
         }
@@ -107,6 +124,35 @@ public class EmpleadoABM {
         dao.actualizar(e);
     }
 
+	
+	
+	public void modificar(long idEmpleado, Empleado empleado) throws Exception {
+	    // Verificar si el empleado existe
+	    Empleado existente = dao.traerEmpleado(idEmpleado);
+	    if (existente == null) {
+	        throw new Exception("No existe el empleado a modificar con ID: " + idEmpleado);
+	    }
+	    
+	    // Validar unicidad solo si se está modificando CUIL o DNI
+	    if (empleado.getCuil() != 0 && empleado.getCuil() != existente.getCuil()) {
+	        Empleado conMismoCuil = dao.traerEmpleadoCuil(empleado.getCuil());
+	        if (conMismoCuil != null && conMismoCuil.getIdPersona() != idEmpleado) {
+	            throw new Exception("Ya existe otro empleado con CUIL: " + empleado.getCuil());
+	        }
+	    }
+	    
+	    if (empleado.getDni() != 0 && empleado.getDni() != existente.getDni()) {
+	        Empleado conMismoDni = dao.traerEmpleadoPorDni(empleado.getDni());
+	        if (conMismoDni != null && conMismoDni.getIdPersona() != idEmpleado) {
+	            throw new Exception("Ya existe otro empleado con DNI: " + empleado.getDni());
+	        }
+	    }
+
+	    // Actualizar solo campos no nulos
+	    dao.actualizarParcial(idEmpleado, empleado);
+	}
+	
+	
 
 	public void eliminarEmpleado(long idEmpleado) throws Exception {
 		Empleado e = dao.traerEmpleado(idEmpleado);
@@ -144,6 +190,10 @@ public class EmpleadoABM {
 	    return dao.eliminarEspecialidad(empleado, especialidad);
 	}
 
+	
+	
+	
+	
 	public List<Empleado> traerEmpleado() {
 		return dao.traerEmpleado();
 	}

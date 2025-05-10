@@ -10,6 +10,9 @@ import org.hibernate.Transaction;
 
 import datos.Empleado;
 import datos.Especialidad;
+import datos.Rol;
+import datos.Turno;
+
 
 public class EmpleadoDao {
 	private static Session session;
@@ -127,6 +130,27 @@ public class EmpleadoDao {
     }
 
     
+    public int agregarTurno(Empleado empleado, Turno turno) throws HibernateException {
+    	try {
+            iniciaOperacion();
+
+            // Establecer la relación bidireccional
+            turno.setEmpleado(empleado);
+
+            // Guardar el turno directamente
+            session.save(turno);
+
+            tx.commit();
+            return 1; // Éxito
+
+        } catch (HibernateException he) {
+            manejaExcepcion(he);
+            throw he;
+        } finally {
+            session.close();
+        }
+    }
+    
     
 
     public void actualizar(Empleado objeto) {
@@ -141,6 +165,56 @@ public class EmpleadoDao {
             session.close();
         }
     }
+    
+    
+    public void actualizarParcial(long idEmpleado, Empleado empleado) {
+        try {
+            iniciaOperacion();
+            
+            // Cargar el empleado actual
+            Empleado empleadoPersistido = session.get(Empleado.class, idEmpleado);
+            if (empleadoPersistido == null) {
+                throw new HibernateException("Empleado no encontrado");
+            }
+            
+            // Actualizar solo campos no nulos/no vacíos
+            if (empleado.getNombre() != null) {
+                empleadoPersistido.setNombre(empleado.getNombre());
+            }
+            if (empleado.getApellido() != null) {
+                empleadoPersistido.setApellido(empleado.getApellido());
+            }
+            if (empleado.getDni() != 0) {
+                empleadoPersistido.setDni(empleado.getDni());
+            }
+            if (empleado.getEmail() != null) {
+                empleadoPersistido.setEmail(empleado.getEmail());
+            }
+            if (empleado.getFechaDeNacimiento() != null) {
+                empleadoPersistido.setFechaDeNacimiento(empleado.getFechaDeNacimiento());
+            }
+            if (empleado.getCuil() != 0) {
+                empleadoPersistido.setCuil(empleado.getCuil());
+            }
+
+            empleadoPersistido.setObraSocial(empleado.isObraSocial());
+            empleadoPersistido.setEstaDisponible(empleado.isEstaDisponible());
+            
+            if (empleado.getRol() != null) {
+                Rol rol = session.get(Rol.class, empleado.getRol().getIdRol());
+                empleadoPersistido.setRol(rol);
+            }
+            
+            session.update(empleadoPersistido);
+            tx.commit();
+        } catch (HibernateException he) {
+            manejaExcepcion(he);
+            throw he;
+        } finally {
+            session.close();
+        }
+    }
+    
 
     public void eliminar(Empleado objeto) {
         try {
@@ -164,6 +238,10 @@ public class EmpleadoDao {
 	        String hql = "SELECT DISTINCT e FROM Empleado e "
 	                   + "LEFT JOIN FETCH e.rol "
 	                   + "LEFT JOIN FETCH e.especialidades "
+	                   + "LEFT JOIN FETCH e.turnos t "
+	                   + "LEFT JOIN FETCH t.cliente "
+	                   + "LEFT JOIN FETCH t.servicio "
+	                   + "LEFT JOIN FETCH t.detalle "
 	                   + "WHERE e.idPersona = :id";
 	        objeto = session.createQuery(hql, Empleado.class)
 	                      .setParameter("id", idEmpleado)
@@ -173,24 +251,7 @@ public class EmpleadoDao {
 	    }
 	    return objeto;
     }
-	
-	/*public Especialidad traerEspecialidadCompleto(long idEspecialidad) {
-	    Especialidad objeto = null;
-	    try {
-	        iniciaOperacion();
-	        String hql = "SELECT DISTINCT e FROM Especialidad e "
-	                   + "LEFT JOIN FETCH e.empleados emp "
-	                   + "LEFT JOIN FETCH emp.rol "
-	                   + "WHERE e.idEspecialidad = :id";
-	        objeto = session.createQuery(hql, Especialidad.class)
-	                      .setParameter("id", idEspecialidad)
-	                      .uniqueResult();
-	    } finally {
-	        session.close();
-	    }
-	    return objeto;
-	}*/
-	
+
 	public Empleado traerEmpleadoConRol(long idEmpleado) {
 	    Empleado objeto = null;
 	    try {
@@ -206,17 +267,22 @@ public class EmpleadoDao {
 	}
 
 
-    public Empleado traerEmpleadoCuil(long cuil) {
-        Empleado objeto = null;
-
-        try {
-            iniciaOperacion();
-            objeto = (Empleado) session.createQuery("from Empleado e where e.cuil ="+cuil).uniqueResult();
-        } finally {
-            session.close();
-        }
-        return objeto;
-    }
+	public Empleado traerEmpleadoCuil(long cuil) {
+	    Empleado objeto = null;
+	    try {
+	        iniciaOperacion();
+	        String hql = "SELECT DISTINCT e FROM Empleado e "
+	                   + "LEFT JOIN FETCH e.rol "
+	                   + "LEFT JOIN FETCH e.especialidades "
+	                   + "WHERE e.cuil = :cuil";
+	        objeto = session.createQuery(hql, Empleado.class)
+	                      .setParameter("cuil", cuil)
+	                      .uniqueResult();
+	    } finally {
+	        session.close();
+	    }
+	    return objeto;
+	}
     
     public Empleado traerEmpleadoPorDni (int dni) {
     	

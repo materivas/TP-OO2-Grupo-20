@@ -129,6 +129,7 @@ public class EspecialidadDao {
         return objeto;
     }
 	
+	
 	public Especialidad traerEspecialidadCompleto(long idEspecialidad) {
 	    Especialidad objeto = null;
 	    try {

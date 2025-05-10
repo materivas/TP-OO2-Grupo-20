@@ -1,5 +1,7 @@
 package datos;
 
+import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 
@@ -7,7 +9,7 @@ public class Especialidad {
 
 	private long idEspecialidad;
 	private String nombre;
-	private Set <Empleado> empleados;
+	private Set <Empleado> empleados = new HashSet<>();
 
 
 	public Especialidad() {
@@ -47,8 +49,27 @@ public class Especialidad {
 	@Override
 	public String toString() {
 		return "Especialidad [idEspecialidad=" + idEspecialidad + ", nombre=" + nombre
-				+ "]";
+				+ "]\n";
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+	    if (this == obj) return true;
+	    if (obj == null || getClass() != obj.getClass()) return false;
+	    Especialidad other = (Especialidad) obj;
+	    return idEspecialidad == other.idEspecialidad;
+	}
+
+	@Override
+	public int hashCode() {
+	    return Objects.hash(idEspecialidad);
+	}
+
+
+	
+	
+	
+	
 
 
 

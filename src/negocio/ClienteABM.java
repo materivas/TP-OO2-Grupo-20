@@ -20,7 +20,7 @@ public class ClienteABM {
 		dao.actualizar(c);
 	}
 
-	public void eliminar(int idCliente) {
+	public void eliminar(long idCliente) {
 		Cliente c = dao.traerCliente(idCliente);
 
 		if (c == null) {
@@ -30,7 +30,7 @@ public class ClienteABM {
 		dao.eliminar(c);
 	}
 
-	public Cliente traerCliente(int idCliente) {
+	public Cliente traerCliente(long idCliente) {
 		Cliente c = dao.traerCliente(idCliente);
 
 		if (c == null) {

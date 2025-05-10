@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"><hibernate-mapping>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
-<class name="datos.Especialidad" table="especialidad">
-    <id column="idEspecialidad" name="idEspecialidad">
-      <generator class="identity"/>
-    </id>
-    
-    <property column="nombre" name="nombre" type="string"/>
-    
-     <set table="especialidadxempleado" name="empleados" outer-join="true">
-	<key column="idEspecialidad"/>
-	<many-to-many column="idEmpleado" class="datos.Empleado"/>
-	</set>
-    
-  </class>    
+<hibernate-mapping>
+	<class name="datos.Especialidad" table="especialidad">
+	    <id name="idEspecialidad" column="idEspecialidad">
+	    	<generator class="identity"/>
+	    </id>
+	    
+	    <property column="nombre" name="nombre" type="string"/>
+	    
+	    <set name="empleados" table="empleadoxespecialidad" cascade="all" lazy="true">
+	    	<key column="idEspecialidad"/>
+	    	<many-to-many class="datos.Empleado" column="idEmpleado"/>
+		</set>
+	 </class>    
 </hibernate-mapping>
