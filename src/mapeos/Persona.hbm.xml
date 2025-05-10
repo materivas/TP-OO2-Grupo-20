@@ -17,10 +17,10 @@
         
         <!--Administrador-->
         <joined-subclass name="datos.Administrador" table="administrador">
-            <key column="idPersona"/>
+            <key column="id_Persona"/>
             <property name="user" column="user"/>
             <property name="password" column="password"/>
-            <many-to-one name="rol" class="datos.Rol" column="idRol"/>
+            <many-to-one name="rol" class="datos.Rol" column="id_rol" not-null="true" lazy="false"/>
         </joined-subclass>
 
 		<!--Empleado-->

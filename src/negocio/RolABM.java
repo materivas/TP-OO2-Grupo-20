@@ -9,15 +9,16 @@ public class RolABM {
     RolDao dao = new RolDao();
 
 
-    public int agregar(Rol rol) {
-		 return dao.agregar(rol);
-	}
-
     public Rol traerRol(String nombre) {
         Rol r = dao.traerRol(nombre);
         // lanzar excepción si es null
         return r;
     }
+    
+    public int agregar(Rol rol) {
+		 return dao.agregar(rol);
+	}
+
 
     public int agregar(String nombreRol) {
         Rol r = new Rol();

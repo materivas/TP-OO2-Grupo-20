@@ -1,8 +1,10 @@
 package negocio;
 
 import java.util.List;
+
 import dao.AdministradorDao;
 import datos.Administrador;
+import datos.Rol;
 
 public class AdministradorABM {
     AdministradorDao dao = new AdministradorDao();
@@ -13,7 +15,7 @@ public class AdministradorABM {
         return a;
     }
 
-    public int agregar(String nombre, String apellido, int dni, String email, String user, String password) {
+    public int agregar(String nombre, String apellido, int dni, String email, String user, String password, Rol rol) {
         Administrador a = new Administrador();
         a.setNombre(nombre);
         a.setApellido(apellido);
@@ -21,6 +23,7 @@ public class AdministradorABM {
         a.setEmail(email);
         a.setUser(user);
         a.setPassword(password);
+        a.setRol(rol);
         return dao.agregar(a);
     }
 
