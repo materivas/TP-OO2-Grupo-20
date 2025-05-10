@@ -3,7 +3,7 @@ import java.time.LocalDate;
 
 
 public class Detalle {
-	 private Long idTurno;
+	private Long idTurno;
 	private boolean estadoTurno;
 	private LocalDate fecha;
 	private String descripcion;
