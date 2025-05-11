@@ -1,15 +1,14 @@
 package datos;
 
+import java.util.Objects;
 
 public class Administrador extends Persona {
-   
+
     private String user;
     private String password;
     private Rol rol;
 
-    public Administrador() {
- 		super();
- 	}
+    public Administrador() {}
     
     public Administrador(String user, String password, Rol rol) {
 		super();
@@ -18,11 +17,8 @@ public class Administrador extends Persona {
 		this.rol = rol;
 	}
 
-    
-    
-    
-    // Getters y Setters
-	public String getUser() {
+	// Getters y Setters
+    public String getUser() {
         return user;
     }
 
@@ -50,6 +46,30 @@ public class Administrador extends Persona {
 	public String toString() {
 		return "Administrador [user=" + user + ", password=" + password + ", rol=" + rol + "]";
 	}
-    
-    
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(password, rol, user);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Administrador other = (Administrador) obj;
+		return Objects.equals(password, other.password) && Objects.equals(rol, other.rol)
+				&& Objects.equals(user, other.user);
+	}
+
+	
+	
+	
+
 }

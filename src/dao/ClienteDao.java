@@ -34,6 +34,8 @@ public class ClienteDao {
         }
         return id;
     }
+    
+    
 
     public void actualizar(Cliente objeto) {
         try {
@@ -61,12 +63,31 @@ public class ClienteDao {
         }
     }
 
-    public Cliente traerCliente(long idCliente) {
+    /*public Cliente traerCliente(long idCliente) {
     	Cliente objeto = null;
 
         try {
             iniciaOperacion();
-            objeto = (Cliente) session.createQuery("from Cliente c where c.idCliente ="+idCliente).uniqueResult();
+            objeto = (Cliente) session.createQuery("from Cliente c where c.idPersona ="+idCliente).uniqueResult();
+        } finally {
+            session.close();
+        }
+        return objeto;
+    }*/
+    
+    public Cliente traerCliente(long idCliente) {
+        Cliente objeto = null;
+        try {
+            iniciaOperacion();
+            String hql = "SELECT DISTINCT c FROM Cliente c "
+                       + "LEFT JOIN FETCH c.turnos t "
+                       + "LEFT JOIN FETCH t.detalle "
+                       + "LEFT JOIN FETCH t.empleado "
+                       + "LEFT JOIN FETCH t.servicio "
+                       + "WHERE c.idPersona = :id";
+            objeto = session.createQuery(hql, Cliente.class)
+                          .setParameter("id", idCliente)
+                          .uniqueResult();
         } finally {
             session.close();
         }

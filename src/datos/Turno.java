@@ -1,6 +1,7 @@
 package datos;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class Turno {
 	private long idTurno;
@@ -72,8 +73,23 @@ public class Turno {
 
 	@Override
 	public String toString() {
-		return "Turno [idTurno=" + idTurno + ", fechaHora=" + fechaHora + ", detalle=" + detalle + ", cliente="
-				+ cliente + ", empleado=" + empleado + ", servicio=" + servicio + "]";
+		return "Turno [idTurno=" + idTurno + ", fechaHora=" + fechaHora + "\n, detalle=" + detalle + ", cliente="
+				+ cliente + ", empleado=" + empleado + ", servicio=" + servicio + "]\n";
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+	    if (this == obj) return true;
+	    if (obj == null || getClass() != obj.getClass()) return false;
+	    Turno other = (Turno) obj;
+	    return idTurno == other.idTurno;
+	}
+
+	@Override
+	public int hashCode() {
+	    return Objects.hash(idTurno);
+	}
+
+	
 	
 }

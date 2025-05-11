@@ -67,14 +67,24 @@ public class TurnoDao {
 	}
 
 	public Turno traer(long idTurno) {
-		Turno objeto = null;
-		try {
-			iniciaOperacion();
-			objeto = session.get(Turno.class, idTurno);
-		} finally {
-			session.close();
-		}
-		return objeto;
+	    Turno objeto = null;
+	    try {
+	        iniciaOperacion();
+	        // JOIN FETCH para cargar todas las relaciones necesarias
+	        String hql = "SELECT DISTINCT t FROM Turno t "
+	                   + "LEFT JOIN FETCH t.detalle "
+	                   + "LEFT JOIN FETCH t.cliente "
+	                   + "LEFT JOIN FETCH t.empleado e "
+	                   + "LEFT JOIN FETCH e.rol " // 
+	                   + "LEFT JOIN FETCH t.servicio "
+	                   + "WHERE t.idTurno = :id";
+	        objeto = session.createQuery(hql, Turno.class)
+	                      .setParameter("id", idTurno)
+	                      .uniqueResult();
+	    } finally {
+	        session.close();
+	    }
+	    return objeto;
 	}
 
 	public List<Turno> traer() {

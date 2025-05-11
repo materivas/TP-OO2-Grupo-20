@@ -21,7 +21,7 @@ public class TestAgregarEmpleado {
 		
 		System.out.println("------------ PRIMERO AGREGAMOS Y CARGAMOS LOS ROLES --------------- \n");
 		
-		
+	
 		RolABM rolABM = new RolABM();
 		EmpleadoABM empleadoABM = new EmpleadoABM();
 		TurnoABM turnoABM = new TurnoABM();
@@ -129,6 +129,8 @@ public class TestAgregarEmpleado {
 		System.out.println("LISTA: " +empleados);
 		
 		
+		
+		
 		System.out.println("--------- AVISO: DEBEN HABER TURNOS CARGADOS EN LA BASE DE DATOS-------------\n");
 		System.out.println("--------- TRAEMOS UNA LISTA DE TURNOS DE X EMPLEADO POR FECHA -------------\n");
 
@@ -140,7 +142,8 @@ public class TestAgregarEmpleado {
 				System.out.println("Turnos:" +empleado.getTurnos());
 				Turno turno = turnoABM.traer(2L);
 				LocalDate localDate = LocalDate.of(2025, 5, 8); // 8 de mayo de 2025
-				Date date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+				//Parseamos el localDate en formato Date
+				Date date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant()); 
 				
 				
 				System.out.println("Buscamos un turno por fecha: ");

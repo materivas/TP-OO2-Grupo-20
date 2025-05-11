@@ -3,6 +3,7 @@ package datos;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 @SuppressWarnings("unused")
@@ -34,7 +35,25 @@ public class Cliente extends Persona {
 
 	@Override
 	public String toString() {
-		return "Cliente [turnos=" + turnos + ", estado=" + estado + "]";
+		return "Cliente [" +super.toString() + "estado=" + estado + "]\n";
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+	    if (this == obj) return true;
+	    if (obj == null || getClass() != obj.getClass()) return false;
+	    Cliente other = (Cliente) obj;
+	    return getDni() == other.getDni();
+	}
+
+	@Override
+	public int hashCode() {
+	    return Objects.hash(getDni());
+	}
+
+	
+	
+	
+	
 
 }

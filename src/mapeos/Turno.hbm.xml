@@ -7,7 +7,7 @@
       <generator class="identity"/>
     </id>
     
-	<property name="fechaHora" column="fecha_hora" type="timestamp"/>
+	<property name="fechaHora" column="fechaHora" type="timestamp"/>
 
     <one-to-one name="detalle" class="datos.Detalle"/>
 	<many-to-one name="cliente" class="datos.Cliente" column="idCliente"/>
