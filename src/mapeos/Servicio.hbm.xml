@@ -12,5 +12,9 @@
         <property name="duracion" column="duracion" type="int"/>
         <property name="precio" column="precio" type="double"/>
         
+        <set name="turnos" table="turno" cascade="all" fetch="select">
+            <key column="idServicio" />
+            <one-to-many class="datos.Turno" />
+        </set>
     </class>
 </hibernate-mapping>
