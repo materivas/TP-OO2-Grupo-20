@@ -1,6 +1,9 @@
 package datos;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
+
 
 public class Servicio {
 	private long idServicio;
@@ -8,6 +11,7 @@ public class Servicio {
 	private String descripcion;
 	private int duracion;
 	private double precio;
+	private Set<Turno> turnos =  new HashSet<>();
 
 	//Constructor
 	public Servicio () {
@@ -25,6 +29,16 @@ public class Servicio {
 	}
 
 	//Getters y Setters
+
+	public Set<Turno> getTurnos() {
+		return turnos;
+	}
+
+
+	public void setTurnos(Set<Turno> turnos) {
+		this.turnos = turnos;
+	}
+
 
 	public long getIdServicio() {
 		return idServicio;
