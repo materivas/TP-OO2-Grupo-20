@@ -114,7 +114,7 @@ public class TestAgregarEmpleado {
 		try {
 			Empleado empleado = empleadoABM.traerEmpleadoID(1L);
 			Rol rol = rolABM.traerRol("Usuario");
-			empleado.setNombre("DURAZNITO");
+			empleado.setNombre("Juan");
 			empleado.setRol(rol);
 			empleadoABM.modificar(empleado);
 		} catch (Exception e) {
@@ -129,13 +129,12 @@ public class TestAgregarEmpleado {
 		System.out.println("LISTA: " +empleados);
 		
 		
-		
-		
+        		
 		System.out.println("--------- AVISO: DEBEN HABER TURNOS CARGADOS EN LA BASE DE DATOS-------------\n");
 		System.out.println("--------- TRAEMOS UNA LISTA DE TURNOS DE X EMPLEADO POR FECHA -------------\n");
 
 		
-		
+	
 		 try {
 				Empleado empleado = empleadoABM.traerEmpleadoID(2L);
 				System.out.println("Empleado:" +empleado.getNombre());

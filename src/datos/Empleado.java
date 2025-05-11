@@ -29,6 +29,8 @@ public class Empleado extends Persona {
 		this.estaDisponible = estaDisponible;
 	}
 	
+	
+	//Obtiene un turno en particular
 	public Turno obtenerTurnoPorFecha(Date fecha) {
 	    for (Turno turno : turnos) {
 	        if (turno.getFechaHora().equals(fecha)) {
@@ -38,6 +40,8 @@ public class Empleado extends Persona {
 	    return null;
 	}
 	
+	
+	//Obtiene los turnos de una fecha en particular
 	public List<Turno> obtenerTurnosPorFecha(Date fechaBuscada) {
 	    List<Turno> turnosEnFecha = new ArrayList<>();
 	    Calendar calBuscada = Calendar.getInstance();

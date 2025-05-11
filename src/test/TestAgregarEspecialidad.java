@@ -51,7 +51,7 @@ public class TestAgregarEspecialidad {
 			empleadoABM.agregarEspecialidad(4L, especialidadABM.traerEspecialidad(4L) );
 			empleadoABM.agregarEspecialidad(5L, especialidadABM.traerEspecialidad(3L) );
 			
-			System.out.println("Juanito: " + empleadoABM.traerEmpleadoID(1L).getNombre() + "  CUIL: " + empleadoABM.traerEmpleadoID(1L).getCuil());
+			System.out.println("Nombre: " + empleadoABM.traerEmpleadoID(1L).getNombre() + "  CUIL: " + empleadoABM.traerEmpleadoID(1L).getCuil());
 			System.out.println(empleadoABM.traerEmpleadoID(1L).getEspecialidades());
 			
 		
@@ -94,7 +94,7 @@ public class TestAgregarEspecialidad {
 		}
 		
 		
-		System.out.println("----------------- INTENTAMOS ELIMINAR LA ESPECIALIDAD ID ---> 1 DEL EMPLEADO ID ----> -------------------\n");
+		System.out.println("----------------- INTENTAMOS ELIMINAR LA ESPECIALIDAD CON ID ---> 1 DEL EMPLEADO ID ----> 1 -------------------\n");
 		
 		try {
 			System.out.println("-------- ANTES DE BORRAR ------------\n");
