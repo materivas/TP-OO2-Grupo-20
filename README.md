@@ -1,8 +1,8 @@
-Proyecto Sistema de Turnos en Java con el framework Hibernate para la materia Programación Orientada a Objetos 2 de la UNLA
+## Proyecto Sistema de Turnos en Java con el framework Hibernate para la materia Programación Orientada a Objetos 2 de la UNLA
 ## Tecnologías utilizadas
 - **Java 11+**
 - **Hibernate 5.4.x**
-- **MySQL 8**
+- **MySQL**
 - **JDBC**
 - **JUnit (tests simples)**
 - IDE recomendado: **Eclipse** o **IntelliJ IDEA**
